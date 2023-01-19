@@ -1,0 +1,39 @@
+ <h2>Текст</h2>
+ <h1><%=@article.title %></h1>
+ <p>
+ 	<%=@article.text %>
+ </p>
+ <h3>Комментарии:</h3>
+
+<%= 'Без комментариев' if @article.comments.empty? %>
+
+<% @article.comments.each do |comment| %>
+
+<p><strong>Автор:</strong> <%= comment.author %></p>
+
+<p><%= comment.body %></p>
+
+<% end %>
+
+<p>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+</p>
+  <p>
+    <%= f.label :author %></br>
+    <%= f.text_field :author %>
+  </p>
+  <p>
+    <%= f.label :body %></br>
+    <%= f.text_area :body %>
+  </p>
+
+  <p><%= f.submit %></p>
+<p>
+<% end %>
+</p>
+
+
+ 
+
+
+ 
